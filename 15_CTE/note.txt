@@ -1,0 +1,18 @@
+CTE(common table expression) is a temporary result set that u can define within a query to simplify complex SQL statement.
+Once CTE has been created it can only be used once. It will not be persisted.
+
+syntax:-
+
+WITH [cte name] AS (
+   [query] -- auxiliary one statement
+),
+[cte 2 name] AS (
+   [query] -- auxiliary two statement
+),
+[cte 3 name] AS (
+   [query] -- auxiliary three statement
+)
+[primary query] -- primary statement
+
+source: https://www.timescale.com/learn/how-to-use-common-table-expression-sql
+

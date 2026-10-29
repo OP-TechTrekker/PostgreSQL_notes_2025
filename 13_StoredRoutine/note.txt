@@ -1,0 +1,84 @@
+sql statements that can be stored on database server which can be called many times and anytime.
+2 types:-
+
+1] stored procedure: set of sql statements and procedural logic that can perform operations such as inserting, updating, deleting,
+                    and querying data.
+
+syntax-
+-   CREATE [OR REPLACE] PROCEDURE procedure_name (parameter_name parameter_type, ...)
+    LANGUAGE plpgsql
+    AS $$
+    DECLARE                                   <--- Optional line
+        -- Variable declarations (optional)   <--- Optional line
+    BEGIN
+        -- Procedure body (SQL statements)
+    END;
+    $$;
+
+- CALL procedure_name(argument1, argument2, ...);
+
+- DROP PROCEDURE procedure_name;
+
+or (more complicated and generalized)
+
+DROP PROCEDURE [IF EXISTS] procedure_name (argument_list) [CASCADE | RESTRICT];
+
+procedure_name: Specify the name of the stored procedure you want to remove.
+IF EXISTS: Use this option to avoid errors if the procedure does not exist; PostgreSQL will issue a notice instead.
+argument_list: Specify the argument list if the procedure name is not unique. Different procedures can share the same name
+               but have different argument lists.
+CASCADE | RESTRICT:
+        CASCADE: Drops the procedure and its dependent objects.
+        RESTRICT: Default option; prevents dropping the procedure if it has dependent objects.
+
+
+
+2] UserDefined Function: custom functions created by the user to perform specific operations and return a value.
+syntax-
+-   CREATE [OR REPLACE] FUNCTION function_name(param_list)
+    RETURNS return_type
+    LANGUAGE plpgsql
+    AS
+    $$
+    DECLARE
+        -- variable declaration
+    BEGIN
+        -- logic
+        RETURN some_value;
+    END;
+    $$;
+
+- DROP FUNCTION [IF EXISTS] function_name(argument_list) [CASCADE | RESTRICT];
+
+function_name: Specify the name of the function you wish to remove after the DROP FUNCTION keywords.
+IF EXISTS Option: Use the IF EXISTS option to instruct PostgreSQL to issue a notice instead of an error if the function does not 
+                exist.
+argument_list: Specify the argument list of the function. PostgreSQL needs this information to identify which function to remove, 
+                especially if functions are overloaded (multiple functions with the same name but different parameters).
+CASCADE Option: Use the CASCADE option to drop the function and its dependent objects. This will recursively remove the function, 
+            its dependent objects, and objects that depend on those objects.
+RESTRICT Option: By default, PostgreSQL uses the RESTRICT option, which prevents the removal of a function if it has any 
+            dependent objects.
+
+
+
+
+note:-https://neon.tech/postgresql/postgresql-plpgsql/plpgsql-block-structure
+https://neon.tech/postgresql/postgresql-plpgsql/dollar-quoted-string-constants
+https://www.postgresql.org/docs/current/sql-syntax-lexical.html#SQL-SYNTAX-DOLLAR-QUOTING
+PL/pgSQL is a block-structured language.
+basic structure:- 
+    [ <<label>> ]
+    [ declare
+        declarations ]
+    begin
+        statements;
+        ...
+    end [ label ];
+
+
+-- $$ string constants allow to construct strings that contain ' and \ without a need to escape them.
+-- no characters inside a dollar-quoted string are ever escaped: the string content is  written literally.
+-- Do use quoted-dollar string constants in anonymous blocks, user-defined functions, and stored procedures.
+
+

@@ -1,0 +1,53 @@
+JSON functions that handle JSON objects.
+
+jsonb_each() – to expand a top-level JSON object of a JSONB value into a set of key/value pairs. 
+The keys are text and values are JSON values.
+syntax of the jsonb_each() function:
+    jsonb_each(json_object)
+
+In this syntax:
+json_object is the JSON object that you want to expand the key/value pairs.
+The function returns a set of records where each record consists of two fields key of type text and value of the JSONB.
+If the json_object is not a JSON object, the function will issue an error. In case the json_object is null, 
+the function returns an empty set.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+jsonb_each_text() – Expand the top-level JSON object into a set of key/value pairs. Both keys and values are text strings.
+basic syntax of the jsonb_each_text() function:
+    jsonb_each_text(json_object)
+
+In this syntax:
+json_object is the JSON object that you want to expand the key/value pairs.
+The function returns a set of records where each record consists of two fields key and value, both have the type text.
+If the json_object is null, the function returns an empty set. in case the json_object is not a JSON object, 
+the function will issue an error.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+jsonb_object_keys() –  Return a set of keys in the top-level JSON object. 
+extract the keys of a JSON object into a set of text values.
+basic syntax of the jsonb_object_keys() function:
+    jsonb_object_keys(json_object)
+
+In this syntax:
+json_object is the JSON object of type JSONB that you want to extract the keys.
+The jsonb_object_keys() function returns a set of text values representing the keys in the json_object.
+If the json_object is not a JSON object, the jsonb_object_keys() function will issue an error.
+If the json_object is NULL, the function will return an empty set.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+jsonb_to_record() – Convert a top-level JSON object into a PostgreSQL record type defined by an AS clause.
+basic syntax of the jsonb_to_record() function:
+    jsonb_to_record(json_object)
+    as record_type (column1 type, column2 type,...)
+
+In this syntax:
+First, specify a JSON object (json_object) of type JSONB that you want to convert into a record type.
+Second, define the record_type with a list of columns that have the same names as the keys in the JSON object.
+The record may have fewer columns than the number of keys in the JSON object. If the names of the columns of the record_type are 
+not the same as the names of the keys in the JSON object, they will be ignored.
+
+The function jsonb_to_record() returns a record type representing the structure of a JSON object.
+If the json_object is null, the jsonb_to_record() function returns null.

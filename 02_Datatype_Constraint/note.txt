@@ -1,0 +1,158 @@
+Datatype:
+most widely used
+numeric - INT, DOUBLE, FLOAT, DECIMAL
+string - VARCHAR
+date - DATE (you can use NOW() To get the current date and time, CURRENT_DATE to get the current date)
+time – use the TIME datatype to manage the time of day values. (To get the current time with the time zone CURRENT_TIME,
+                                                                To get the local time, you use the LOCALTIME)
+Boolean - BOOLEAN
+for more- https://www.postgresql.org/docs/current/datatype.html
+
+Constraint:
+multiple types of constraint can be put on a single column
+- primary key: unique identification of each record.The column value must be unique, and not null. Only one primary key per table.
+                it also becomes index for table by default.
+- not null: no null values allowed for the column with this Constraint.
+- default: if no value provided for the column with this constraint, put a default value there.
+- auto_increment:  pseudo-type SERIAL (or SMALLSERIAL OR BIGSERIAL)to create an auto-increment column for a table. The value 
+    increments by 1 automatically starting from 1 by default. mostly added on columns we want to be unique and sequential.
+- unique: ensure that values in a column or a group of columns are unique across the table.
+
+-- note:
+SERIAL creates a SEQUENCE object (say obj).
+currval(obj) gives last recently generated value by nextval() in current-session. its session dependent.
+nextval(obj) gives next value in sequence.even if multiple sessions execute nextval concurrently, 
+each will safely receive a distinct sequence value.
+If a sequence object has been created with default parameters, successive nextval calls will return successive values 
+beginning with 1. avoid blocking concurrent transactions that obtain numbers from the same sequence, a nextval operation is 
+never rolled back; that is, once a value has been fetched it is considered used
+source: https://www.postgresql.org/docs/9.1/functions-sequence.html
+
+There are many cases in which you want to convert a value of one type into another. 
+PostgreSQL offers the CAST() function and cast operator (::) to do this.
+
+Here’s the basic syntax of the type CAST() function:
+  CAST(<code>value</code> AS target_type );
+In this syntax:
+First, provide a value that you want to convert. It can be a constant, a table column, or an expression.
+Then, specify the target data type to which you want to convert the value.
+The CAST() returns a value after it has been cast to the specified target data type. If the CAST() function cannot cast the value 
+to a target type, it’ll raise an error. The error message will depend on the nature of the conversion failure.
+
+Besides the type CAST() function, you can use the following cast operator (::) to convert a value of one type into another:
+  value::target_type
+In this syntax:
+value is a value that you want to convert.
+target_type specifies the target type that you want to cast the value to.
+The cast operator :: returns a value after casting the value to the target_type or raise an error if the cast fails.
+
+Notice that the cast operator (::) is PostgreSQL-specific and does not conform to the SQL standard
+
+Commands:--
+
+1.] primary key 
+note: PostgreSQL uses the format table-name_pkey as the default name for the primary key constraint.
+- CREATE TABLE table_name (
+  column_1 data_type PRIMARY KEY,
+  column_2 data_type,
+  …
+);
+
+- CREATE TABLE table_name (
+  column_1 data_type,
+  column_2 data_type,
+  column_3 data_type,
+  …
+  PRIMARY KEY(column_1, column2, ...)
+);
+If the primary key consists of more than one column
+
+- ALTER TABLE table_name
+ADD PRIMARY KEY (column_1, column_2, ...);
+To add a primary key to an existing table
+
+- ALTER TABLE table_name
+ADD CONSTRAINT constraint_name
+PRIMARY KEY(column_1, column_2,...);
+
+or
+
+CREATE TABLE table_name (
+  column_1 data_type,
+  column_2 data_type,
+  column_3 data_type,
+  …
+  CONSTRAINT constraint_name PRIMARY KEY(column_1, column2, ...)
+);
+
+- ALTER TABLE table_name
+DROP CONSTRAINT primary_key_constraint;
+
+
+2] not null
+- CREATE TABLE table_name(
+   ...
+   column_name data_type NOT NULL,
+   ...
+);
+
+- ALTER TABLE table_name
+ALTER COLUMN column_name SET NOT NULL;
+
+- ALTER TABLE table_name
+ALTER COLUMN column_name DROP NOT NULL;
+
+
+3] default
+- CREATE TABLE table_name(
+    column1 type,
+    column2 type DEFAULT default_value,
+    column3 type,
+    ...
+);
+
+- ALTER TABLE table_name
+ALTER COLUMN column2
+SET DEFAULT default_value;
+
+- ALTER TABLE table_name
+ALTER COLUMN column2
+DROP DEFAULT;
+
+
+4] auto_increment
+- CREATE TABLE table_name(
+    column_name SERIAL
+);
+
+
+5] unique
+- CREATE TABLE table_name(    
+col1 datatype,    
+col2 datatype UNIQUE,    
+ ...    
+);    
+
+- CREATE TABLE table (
+    c1 data_type,
+    c2 data_type,
+    c3 data_type,
+    UNIQUE (c2, c3)
+);
+Creating a UNIQUE constraint on multiple columns
+
+or 
+
+CREATE TABLE table (
+    c1 data_type,
+    c2 data_type,
+    c3 data_type,
+    CONSTRAINT constraint_name UNIQUE (c2, c3)
+);
+
+- ALTER TABLE table_name  
+ADD CONSTRAINT constraint_name  
+UNIQUE(column(s));    
+
+- ALTER TABLE table_name    
+DROP CONSTRAINT constraint_name; 

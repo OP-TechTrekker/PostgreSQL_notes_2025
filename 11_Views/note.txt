@@ -1,0 +1,12 @@
+view is a virtual temporary table which can be accessed easily.
+A view is a named query stored in the PostgreSQL database server. A view is defined based on one or more tables which are 
+known as base tables, and the query that defines the view is referred to as a defining query.
+After creating a view, you can query data from it as you would from a regular table. Behind the scenes, 
+PostgreSQL will rewrite the query against the view and its defining query, executing it to retrieve data from the base tables.
+Views also automatically reflects changes made in the base tables.
+
+
+syntax:- 
+CREATE VIEW view_name
+AS
+  query;

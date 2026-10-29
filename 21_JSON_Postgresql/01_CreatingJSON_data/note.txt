@@ -1,0 +1,42 @@
+to_jsonb() – Convert an SQL value to a value of JSONB.
+to_jsonb ( value ) → jsonb
+ If the value is an array or a composite value, the function will convert to arrays or objects in JSON.
+
+-----------------------------------------------------------------------------------------------------
+
+jsonb_build_array() – Construct a JSON array from a list of values or the result of a query.
+Here’s the basic syntax of the jsonb_build_array() function:
+    jsonb_build_array ( VARIADIC "any" ) → jsonb
+In this syntax, you provide a list of arguments that you want to convert to elements of a JSON array.
+The jsonb_build_array() will convert each argument using the to_jsonb() function.
+
+-----------------------------------------------------------------------------------------------------
+
+jsonb_build_object() – Build a JSON object from a list of alternating keys and values.
+Here’s the basic syntax of the jsonb_build_object() function:
+    jsonb_build_object ( VARIADIC "any" ) → jsonb
+In this syntax, pass a list of alternative keys and values. The list must have an even number of elements or you’ll get an error.
+The function will coerce the key to text and value to a JSON value using the to_jsonb() function.
+
+-----------------------------------------------------------------------------------------------------
+
+jsonb_object() – Build a JSON object from a text array.
+Here’s the syntax of the jsonb_object() function:
+    jsonb_object(text[]) → jsonb
+In this syntax, text[] array can be:
+A one-dimensional array that contains an even number of elements. The elements are the alternating key/value pairs.
+A two-dimensional array. Each inner array has exactly two elements representing the key/value pair.
+The jsonb_object() function returns a JSON object constructed from the text array with the type of JSONB.
+The jsonb_object() function has another syntax that takes keys and values pairwise from separate text arrays
+    jsonb_object ( keys text[], values text[] ) → jsonb
+In this syntax, the keys and values arrays in this syntax have the same number of elements. The keys array contains the 
+keys of the JSON object whereas the values array contains the corresponding values of the keys.
+
+-----------------------------------------------------------------------------------------------------
+
+row_to_json() – Create a JSON object from a SQL composite value.
+Here’s the syntax of the row_to_json() function:
+    row_to_json ( record [, boolean ] ) → json
+In this syntax:
+record is an SQL composite value that you want to convert into a JSON object.
+boolean if true, the function will add a line feed between top-level elements.

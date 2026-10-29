@@ -1,0 +1,49 @@
+Commands:--
+
+- CREATE TABLE table_name(
+    column1 datatype,
+    column2 datatype,
+    .
+    .
+    .
+);
+
+
+- DROP TABLE table_name;
+
+
+- INSERT INTO table_name (column1, column2, ...., columnN)   <-- this specifies the column.
+VALUES (value1, value2, ...., columnN),
+       (value1, value2, ...., columnN),
+       (value1, value2, ...., columnN),
+       .
+       .;
+
+or 
+
+INSERT INTO table_name
+VALUES (value1, value2, ....),
+       (value1, value2, ....),
+       (value1, value2, ....),
+       .
+       .;
+
+
+- SELECT * FROM table_name;
+
+or 
+
+SELECT column(s) FROM table_name;  <-- comma separated columns.
+
+
+- UPDATE table_name
+  SET column1 = value1, column2 = value2...., columnN = valueN
+  WHERE [condition];
+
+You can use WHERE clause with UPDATE query to update the selected rows. Otherwise, all the rows would be updated.
+
+
+- DELETE FROM table_name
+  WHERE [condition];
+
+You can use WHERE clause with DELETE query to delete the selected rows. Otherwise, all the records would be deleted.

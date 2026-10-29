@@ -1,0 +1,9 @@
+sources i used throughout the course: 
+1] https://neon.tech/postgresql/tutorial
+2] https://www.tutorialspoint.com/postgresql/index.htm
+3] https://www.postgresql.org/docs/
+
+Commands:--
+
+- CREATE DATABASE database_name;
+- DROP DATABASE database_name;

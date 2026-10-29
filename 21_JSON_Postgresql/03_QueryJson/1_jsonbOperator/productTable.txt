@@ -1,0 +1,63 @@
+values in product table:
+row1 :
+{
+    "name": "iPhone 15 Pro",
+    "category": "Electronics",
+    "description": "The latest iPhone with advanced features.",
+    "brand": "Apple",
+    "price": 999.99,
+    "attributes": {
+        "color": "Graphite",
+        "storage": "256GB",
+        "display": "6.1-inch Super Retina XDR display",
+        "processor": "A15 Bionic chip"
+    },
+    "tags": ["smartphone", "iOS", "Apple"]
+
+}
+
+row2 : 
+{
+    "name": "Samsung Galaxy Watch 4",
+    "category": "Electronics",
+    "description": "A smartwatch with health tracking and stylish design.",
+    "brand": "Samsung",
+    "price": 349.99,
+    "attributes": {
+        "color": "Black",
+        "size": "42mm",
+        "display": "AMOLED display",
+        "sensors": ["heart rate monitor", "ECG", "SpO2"]
+    },
+    "tags": ["smartwatch", "wearable", "Samsung"]
+}
+
+row3 :
+{
+    "name": "Leather Case for iPhone 15 Pro",
+    "category": "Accessories",
+    "description": "Premium leather case for iPhone 15 Pro.",
+    "brand": "Apple",
+    "price": 69.99,
+    "attributes": {
+        "color": "Saddle Brown",
+        "material": "Genuine leather",
+        "compatible_devices": ["iPhone 15 Pro", "iPhone 15 Pro Max"]
+    },
+    "tags": ["phone case", "accessory", "Apple"]
+}
+
+
+row4 :
+{
+    "name": "Wireless Charging Pad",
+    "category": "Accessories",
+    "description": "Fast wireless charger compatible with smartphones and smartwatches.",
+    "brand": "Anker",
+    "price": 29.99,
+    "attributes": {
+        "color": "White",
+        "compatible_devices": ["iPhone", "Samsung Galaxy", "Apple Watch", "Samsung Galaxy Watch"]
+    },
+    "tags": ["accessory", "wireless charger"]
+}

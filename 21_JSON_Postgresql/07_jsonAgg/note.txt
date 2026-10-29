@@ -1,0 +1,25 @@
+collect data from multiple rows into a JSON array or object.
+---
+
+jsonb_agg() – aggregate a list of values including NULL into a JSON array.
+The jsonb_agg() function is an aggregate function that allows you to aggregate values into a JSON array.
+The jsonb_agg() function can be particularly useful when you want to create a JSON array from data of multiple rows.
+Here’s the syntax of the jsonb_agg() function:
+    jsonb_agg(expression)
+
+In this syntax:
+expression: is any valid expression that evaluates to a JSON value.
+
+--------------------------------------------------------------------------------------------------------------------
+
+jsonb_object_agg() – aggregate a list of key/value pairs into a JSON object.
+jsonb_object_agg() function is an aggregate function that allows you to collect key/value pairs into a JSON object.
+The jsonb_object_agg() can be useful when you want to aggregate data from multiple rows into a single JSON object or 
+construct complex JSON output.
+syntax of the jsonb_object_agg() function:
+    jsonb_object_agg(key, value)
+
+In this syntax:
+key represents the key for the JSON object. The key must not be null.
+value represents the value for the corresponding key.
+The jsonb_object_agg() returns a JSON object that consists of key/value pairs.

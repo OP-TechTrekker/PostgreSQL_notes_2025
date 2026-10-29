@@ -1,0 +1,51 @@
+jsonb_insert() – Insert a new value into a JSONB document of JSONB type based on a path and return the modified JSONB document.
+the jsonb_insert() function allows you to add a new element into an array or a new key/value pair into an object, 
+or nested combinations of them.
+
+he syntax of the jsonb_insert() function:
+jsonb_insert(
+   target jsonb,
+   path text[],
+   new_value jsonb,
+   [insert_after boolean]
+) → jsonb
+In this syntax:
+- target: The JSON document of the JSONB type into which you want to insert a new value.
+- path: This is an array of text elements that specifies the path where you want to insert the new value.
+- new_value is the new value that you want to insert into the JSON document.
+- insert_after: This is an optional boolean parameter indicating whether you want to insert the new value after the specified 
+   path instead of before. It defaults to false, meaning that the function will insert a new value before the specified path.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+jsonb_set() – Replace existing values in a JSON document based on a path and return the modified JSON document.
+the jsonb_set() function allows you to replace an array element or key/value in a JSON object, or nested combinations of them.
+Here’s the syntax of the jsonb_set() function:
+
+jsonb_set(
+   target jsonb,
+   path text[],
+   new_value jsonb
+   [, create_missing boolean]
+)
+
+In this syntax:
+- target: This is the original JSON document of the JSONB type that you want to modify.
+- path: This is an array of text elements that specifies the path to the key where you want to insert or update the data.
+- new_value is the new JSONB value that you want to set at the specified path.
+- create_missing: This is an optional boolean parameter indicating whether you want to create missing keys if they do not exist. 
+   It defaults to true, meaning that the function will create a new key if you attempt to set it for a key that does not exist.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+jsonb_strip_nulls() – Delete all object fields that have null values from a specified JSON document recursively.
+It does not delete non-object fields with null values.
+Here’s the syntax of the jsonb_strip_nulls() function:
+    jsonb_strip_nulls(jsonb_data)
+
+In this syntax, you specify a JSON document in which you want to delete all object fields with null values. 
+The jsonb_data must have the type JSONB.
+The jsonb_strip_nulls returns a new jsonb_data whose object fields with null values are removed.
+If the jsonb_data is null, the function returns NULL.
+

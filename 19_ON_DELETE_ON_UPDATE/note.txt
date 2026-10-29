@@ -1,0 +1,21 @@
+a foreign key is a column or a group of columns in a table that uniquely identifies a row in another table.
+A foreign key establishes a link between the data in two tables by referencing the primary key or a unique constraint of the 
+referenced table.
+The table containing a foreign key is referred to as the referencing table or child table. Conversely, the table referenced by a 
+foreign key is known as the referenced table or parent table.
+The main purpose of foreign keys is to maintain referential integrity in a relational database, ensuring that relationships 
+between the parent and child tables are valid.
+For example, a foreign key prevents the insertion of values that do not have corresponding values in the referenced table.
+Additionally, a foreign key maintains consistency by automatically updating or deleting related rows in the child table when 
+changes occur in the parent table.
+
+[CONSTRAINT fk_name] FOREIGN KEY(fk_columns) REFERENCES parent_table(parent_key_columns)
+ [ON DELETE delete_action]
+ [ON UPDATE update_action]
+   
+The delete and update actions determine the behaviors when the primary key in the parent table is deleted and updated.
+Because the foreign key constraint does not have the ON DELETE and ON UPDATE action, they default to NO ACTION.
+(NOTE TO MYSELF: on update cascade dont well work on foreign keys who reference primary key of type "GENERATED ALWAYS AS IDENTITY"
+because GENERATED ALWAYS AS IDENTITY: The database always generates a value for the column. Manual insertion or updates to this
+ column are not allowed unless the OVERRIDING SYSTEM VALUE clause is used.
+ source: https://orm.drizzle.team/docs/column-types/pg)

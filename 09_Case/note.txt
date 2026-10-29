@@ -1,0 +1,9 @@
+CASE – form conditional queries with CASE expression.
+
+syntax:-
+CASE
+      WHEN condition_1  THEN result_1
+      WHEN condition_2  THEN result_2
+      [WHEN ...]
+      [ELSE else_result]
+END

@@ -1,0 +1,52 @@
+windows function also known as analytic functions allow you to perform calculations accross a set of rows 
+related to the current row. Defined by an OVER() clause.
+    ROW_NUMBER()     -Number the current row within its partition starting from 1.
+    RANK()           -Rank the current row within its partition with gaps.
+    DENSE_RANK()     -Rank the current row within its partition without gaps.
+    LAG()            -Return a value evaluated at the row that is at offset row before the current row within the partition.
+    LEAD()           -Return a value evaluated at the row that is offset rows after the current row within the partition.
+    CUME_DIST()	     -Return the relative rank of the current row.(cumulative distribution)
+                     CUME_DIST(r)= Number of rows with values ≤ r/Total number of rows in the partition
+                     ( In my observation:
+                     1] when order by is ASC (default)
+                      CUME_DIST(r)= Number of rows with values ≤ r/Total number of rows in the partition
+                     2] when order by is DESC
+                      CUME_DIST(r)= Number of rows with values ≥ r/Total number of rows in the partition
+                     )
+    for more:- https://neon.tech/postgresql/postgresql-window-function
+
+
+
+BENEFITS:- 
+[1] Advanced Analytics: They enable complex calculations like running totals, moving averages, rank calculations, 
+   and cumulative distributions.
+
+[2] Non-Aggregating: Unlike aggregate functions, window functions do not collapse rows. This means you can calculate aggregates 
+   while retaining individual row details.
+
+[3] Flexibility: They can be used in various clauses of SQL, such as SELECT, ORDER BY, and HAVING, providing a lot of flexibility 
+   in writing queries.
+
+
+syntax:-
+window_function(arg1, arg2,..) OVER (
+    [PARTITION BY partition_expression] [ORDER BY sort_expression [ASC | DESC] [NULLS {FIRST | LAST }]])
+
+- window_function(arg1,arg2,...)
+The window_function is the name of the window function. Some window functions do not accept any argument.
+
+- PARTITION BY clause
+The PARTITION BY clause divides rows into multiple groups or partitions to which the window function is applied. 
+If you skip the PARTITION BY clause, the window function will treat the whole result set as a single partition.
+
+- ORDER BY clause
+The ORDER BY clause specifies the order of rows in each partition to which the window function is applied.
+The ORDER BY clause uses the NULLS FIRST or NULLS LAST option to specify whether nullable values should be first or last in 
+the result set. The default is NULLS LAST option.
+
+- OVER()
+The OVER clause determines exactly how the rows of the query are split up for processing by the window function. 
+The PARTITION BY clause within OVER divides the rows into groups, or partitions, that share the same values of the PARTITION 
+BY expression(s). 
+For each row, the window function is computed across the rows that fall into the same partition as the current row.
+You can also control the order in which rows are processed by window functions using ORDER BY within OVER. 

@@ -1,0 +1,40 @@
+To change the structure of an existing table, you use PostgreSQL ALTER TABLE statement.
+ALTER TABLE table_name action;
+
+PostgreSQL provides you with many actions:
+Add a column
+Drop a column
+Change the data type of a column
+Rename a column
+Set a default value for the column
+Add a constraint to a column.
+Rename a table
+
+Commands:- 
+- ALTER TABLE table_name
+ADD COLUMN column_name datatype [column_constraint];
+
+- ALTER TABLE table_name
+DROP COLUMN column_name;
+
+- ALTER TABLE table_name
+RENAME COLUMN column_name TO new_column_name;
+
+- ALTER TABLE table_name
+ALTER COLUMN column_name [SET DEFAULT value | DROP DEFAULT];
+
+- ALTER TABLE table_name
+ALTER COLUMN column_name [SET NOT NULL| DROP NOT NULL];
+
+- ALTER TABLE table_name
+ADD CHECK expression;
+
+- ALTER TABLE table_name
+ADD CONSTRAINT constraint_name constraint;
+-- Generally, to add a constraint to a table
+
+- ALTER TABLE table_name
+RENAME TO new_table_name;
+
+- ALTER TABLE table_name
+ALTER COLUMN column_name SET DATA TYPE data_type;

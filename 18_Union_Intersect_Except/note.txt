@@ -1,0 +1,18 @@
+The UNION operator allows you to combine the result sets of two or more SELECT statements into a single result set.
+The number and the order of the columns in the select list of both queries must be the same.
+The data types of the columns in select lists of the queries must be compatible.
+The UNION and UNION ALL operators may order the rows in the final result set, in an unspecified order. For example, 
+it may place rows from the second result set before/after the row from the first result set.
+To sort rows in the final result set, you specify the ORDER BY clause after the second query.
+UNION ALL operator retains the duplicate rows where else UNION doesn't.
+
+INTERSECT returns all rows that are both in the result of query1 and in the result of query2. 
+Duplicate rows are eliminated unless INTERSECT ALL is used.
+
+EXCEPT returns all rows that are in the result of query1 but not in the result of query2. 
+(This is sometimes called the difference between two queries.) Again, duplicates are eliminated unless EXCEPT ALL is used.
+
+syntax:-
+-   SELECT select_list FROM A
+    {UNION|UNION ALL|EXCEPT|EXCEPT ALL|INTERSECT|INTERSECT ALL}
+    SELECT select_list FROM B;

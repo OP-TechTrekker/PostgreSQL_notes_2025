@@ -1,0 +1,10 @@
+Group By – divide rows of a result set into groups and optionally apply an aggregate function to each group.
+Having – apply conditions to groups, which allow you to filter groups.
+
+Command:-
+- SELECT column_1, column_2, ..., aggregate_function(column_3) FROM table_name
+  GROUP BY column_1, column_2, ...;
+
+- SELECT column1, aggregate_function (column2) FROM table_name
+GROUP BY column1
+HAVING condition;

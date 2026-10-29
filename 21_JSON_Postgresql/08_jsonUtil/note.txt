@@ -1,0 +1,21 @@
+utility functions for getting types of JSONB values and formats JSON values into a human-readable format.
+----
+
+jsonb_typeof() – Return the data type of top-level JSON value as a text string.
+syntax of the jsonb_typeof() function:
+    jsonb_typeof(jsonb_value)
+
+In this syntax:
+jsonb_value is a JSONB value of which you want to get the type as a text string.
+The jsonb_typeof() function returns a text string representing the type of the input JSONB value. 
+The possible return values are object, array, string, number, and null.
+
+------------------------------------------------------------------------------------------------------------
+
+jsonb_pretty() – Format a JSON value into human-readable, indented format, making it easier to read.
+syntax of the jsonb_pretty() function:
+    jsonb_pretty(jsonb_value)
+
+In this syntax:
+jsonb_value is a JSONB value that you want to convert.
+The jsonb_pretty() function returns a text that is the human-readable and indented format of the input JSONB value.

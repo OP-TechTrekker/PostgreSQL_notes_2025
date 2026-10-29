@@ -1,0 +1,19 @@
+The HAVING clause specifies a search condition for a group. The HAVING clause is often used with the GROUP BY clause 
+to filter groups based on a specified condition.
+The WHERE clause filters the rows based on a specified condition whereas the HAVING clause filter groups of rows according to a 
+specified condition.
+In other words, you apply the condition in the WHERE clause to the rows while you apply the condition in the HAVING clause 
+to the groups of rows.
+WHERE clause can't be used after GROUP BY. instead HAVING is used.
+basic syntax:-
+        SELECT
+            column1,
+            aggregate_function (column2)
+        FROM
+            table_name
+        GROUP BY
+            column1
+        HAVING
+            condition;
+
+for rollup: https://www.pgtutorial.com/postgresql-tutorial/postgresql-rollup/

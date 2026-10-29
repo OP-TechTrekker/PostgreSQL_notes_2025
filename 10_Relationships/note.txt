@@ -1,0 +1,60 @@
+connections and links between tables is called relation ship.
+Types of relationships:
+- One to one:  Each record in Table A is associated with one and only one record in Table B, and vice versa. 
+              eg- each person has one passport, and each passport belongs to one person.
+- One to many: Each record in Table A can be associated with multiple records in Table B.
+              eg- one customer can place multiple orders, but each order is associated with only one customer.
+- many to many:  multiple records in one table are associated with multiple records in another table. 
+              eg- students can enroll in multiple courses, and each course can have multiple students.
+----------------------------------------------------------------------------------------------------------------------
+FOREIGN KEY:- establishes a link between the data in two tables by referencing the primary key of the referenced table.
+The table containing a foreign key is referred to as the referencing table or child table. Conversely, 
+the table referenced by a foreign key is known as the referenced table or parent table.
+The main purpose of foreign keys is to maintain referential integrity in a relational database, 
+ensuring that relationships between the parent and child tables are valid.
+For example, a foreign key prevents the insertion of values that do not have corresponding values in the referenced table.
+ 
+commands:- 
+- CREATE TABLE child_table (
+    column1 datatype,
+    column2 datatype,
+    ...
+    CONSTRAINT fk_name FOREIGN KEY (foreign_key_column) REFERENCES parent_table(primary_key_column)
+);
+
+- ALTER TABLE child_table
+ADD CONSTRAINT constraint_name FOREIGN KEY (fk_columns) REFERENCES parent_table (parent_key_columns);
+
+- ALTER TABLE child_table
+DROP CONSTRAINT constraint_fkey;
+----------------------------------------------------------------------------------------------------------------------
+Joins:- combine columns from one (self-join) or more tables based on the values of the common columns between related tables.
+types of joins:-
+- cross join: produce a Cartesian product of the rows in two or more tables.
+    SELECT select_list
+    FROM table1 CROSS JOIN table2;
+
+- inner join: select rows from one table that have the corresponding rows in other tables.
+    SELECT select_list
+    FROM table1 INNER JOIN table2
+    ON table1.column_name = table2.column_name;
+
+- left join: Returns all records from the left table, and the matched records from the right table
+    SELECT select_list
+    FROM table1 LEFT JOIN table2
+    ON table1.column_name = table2.column_name;
+
+- right join:  Returns all records from the right table, and the matched records from the left table
+    SELECT select_list 
+    FROM table1 RIGHT JOIN table2
+    ON table1.column_name = table2.column_name;
+
+- Full Outer Join: use the full join to find a row in a table that does not have a matching row in another table.
+    SELECT select_list
+    FROM table1 FULL OUTER JOIN table2
+    ON table1.column_name = table2.column_name;
+
+- Self-join: join a table to itself by comparing a table to itself.
+    SELECT select_list
+    FROM table1 t1 {INNER|RIGHT|LEFT|OUTER} JOIN table1 t2 
+    ON join_predicate;

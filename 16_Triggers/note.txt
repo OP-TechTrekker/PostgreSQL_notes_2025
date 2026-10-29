@@ -1,0 +1,58 @@
+triggers are special procedures in database that automatically execute predefined actions in response to certain events on a 
+specified table or view.
+If the trigger fires before or instead of the event, the trigger can skip the operation for the current row, 
+or change the row being inserted (for INSERT and UPDATE operations only).
+
+
+syntax:-
+
+- CREATE  TRIGGER trigger_name 
+  {BEFORE|AFTER|INSTEAD OF} {INSERT | UPDATE | DELETE | TRUNCATE} ON table_name
+  [ FOR [ EACH ] { ROW | STATEMENT } ]
+  EXECUTE { FUNCTION | PROCEDURE } function_name ( arguments );
+
+- DROP TRIGGER [IF EXISTS] trigger_name ON table_name [ CASCADE | RESTRICT ];
+
+use the CASCADE option to drop objects that depend on the trigger automatically. Note that CASCADE option will also delete objects 
+that depend on objects that depend on the trigger.
+Finally, use the RESTRICT option to refuse to drop the trigger if any objects depend on it. By default, 
+the DROP TRIGGER statement uses RESTRICT.
+
+- CREATE OR REPLACE FUNCTION trigger_function_name(parameter_list)
+    RETURNS TRIGGER 
+    AS $$
+    BEGIN
+       -- Trigger logic here
+    END;
+    $$ 
+    LANGUAGE plpgsql;
+
+
+
+sources: 
+https://www.postgresql.org/docs/8.1/triggers.html
+https://www.postgresql.org/docs/current/sql-createtrigger.html
+https://www.postgresql.org/docs/current/plpgsql-trigger.html
+https://www.postgresql.org/docs/current/trigger-definition.html
+
+
+NEW record
+new database row for INSERT/UPDATE operations in row-level triggers. This variable is null in statement-level triggers and
+for DELETE operations.
+
+OLD record 
+old database row for UPDATE/DELETE operations in row-level triggers. This variable is null in statement-level triggers and 
+for INSERT operations.
+
+A trigger function must return NULL or a record/row value having exactly the structure of the table the trigger was fired for.
+Row-level triggers fired BEFORE can return null to signal the trigger manager to skip the rest of the operation for this row 
+(i.e., subsequent triggers are not fired, and the INSERT/UPDATE/DELETE does not occur for this row). If a nonnull value is 
+returned then the operation proceeds with that row value. Returning a row value different from the original value of NEW alters 
+the row that will be inserted or updated. Thus, if the trigger function wants the triggering action to succeed normally without 
+altering the row value, NEW (or a value equal thereto) has to be returned. To alter the row to be stored, it is possible to 
+replace single values directly in NEW and return the modified NEW, or to build a complete new record/row to return. In the case 
+of a before-trigger on DELETE, the returned value has no direct effect, but it has to be nonnull to allow the trigger action to 
+proceed. Note that NEW is null in DELETE triggers, so returning that is usually not sensible. The usual idiom in DELETE triggers 
+is to return OLD.
+The return value of a row-level trigger fired AFTER or a statement-level trigger fired BEFORE or AFTER is always ignored; 
+it might as well be null.

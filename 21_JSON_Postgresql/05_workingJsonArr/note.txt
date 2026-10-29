@@ -1,0 +1,33 @@
+JSON functions that work with JSON arrays including getting array length and expanding array elements into JSONB values and text.
+
+jsonb_array_length() – Return the number of elements in the top-level JSON array.
+Here’s the syntax of the jsonb_array_length() function:
+    jsonb_array_length(json_array)
+
+In this syntax, you pass a JSON array with the type JSONB to the function. It’ll return the number of elements in the array.
+If the array is empty, the jsonb_array_length() function returns zero. If the argument is not an array, 
+the function will issue an error. In case the json_array is NULL, the jsonb_array_length() function will return NULL.
+Note that the function will return the number of elements of the top-level array only. If the array contains nested arrays, 
+the function will not count the elements in the nested arrays but consider the nested arrays as individual elements.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+jsonb_array_elements() – Expand the top-level JSON array into a set of JSON values.
+the basic syntax of the jsonb_array_elements() function:
+    jsonb_array_elements(json_array)
+
+In this syntax, you specify a JSON array with a JSONB type that you want to expand its elements.
+The jsonb_array_elements() function will expand the elements of the json_array into individual elements.
+If you pass a non-array to the function, it’ll issue an error. If the json_array is NULL, the function returns an empty result set.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+jsonb_array_elements_text() – Expand the top-level JSON array into a set of text values.
+the basic syntax of the jsonb_array_elements_text() function:
+    jsonb_array_elements_text(json_array)
+
+In this syntax:
+json_array is a JSON array with the JSONB type, which you want to expand the elements.
+The jsonb_array_elements_text() function will expand the elements in the json_array into individual text values.
+If you pass an object to the function, it’ll issue an error. In case the json_array is NULL, 
+the function returns an empty result set.

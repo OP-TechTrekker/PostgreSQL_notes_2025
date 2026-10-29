@@ -1,0 +1,23 @@
+aggregate functions:
+AVG() – return the average value.
+COUNT() – return the number of values.
+MAX() – return the maximum value.
+MIN() – return the minimum value.
+SUM() – return the sum of all or distinct values.
+
+string functions:
+- CONCAT() - Concatenate two or more strings into one
+- CONCAT_WS() -	Concatenate strings with a specified separator.
+- SUBSTRING() -	Extract a substring from a string
+- LEFT() - Return the first n character in a string
+- RIGHT() -Return the last n characters of string. When n is (-)ve, return all but the first \n characters.
+- LENGTH() - Return the number of characters in a string
+- UPPER() -	Convert a string to uppercase
+- LOWER() -	Convert a string to lowercase
+- TRIM() -	Remove the leading and trailing characters from a string.
+- RTRIM() - Remove the longest string that contains specified characters from the right of the input string.
+- LTRIM() -	Remove the longest string that contains specified characters from the left of the input string
+- REPLACE() -	Replace a substring within a string with a new one.
+- POSITION() -	Return the location of a substring in a string.
+- STRING_AGG() - function is an aggregate function that concatenates a list of strings and places a separator between them. 
+                It does not add the separator at the end of the string.
